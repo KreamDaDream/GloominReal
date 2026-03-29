@@ -254,6 +254,7 @@ public class plrMovement : MonoBehaviour, IDataPersistence
     public void die()
     {
         dying = true;
+        canDash = false;
         AudioManager.Instance.ChangeMusic(AudioManager.Instance.wind);
 
         foreach (Transform po in pools.transform)

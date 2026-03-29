@@ -183,6 +183,8 @@ public class BattleBox : MonoBehaviour
             }
             plr.GetComponent<plrMovement>().toggleLockCamera(false);
             plr.GetComponent<plrMovement>().challenged = false;
+            plrMovement.instance.canBeEngaged = true;
+
             plr.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             plr.layer = LayerMask.NameToLayer("Default");
             plr.GetComponent<plrMovement>().canInteract = true;

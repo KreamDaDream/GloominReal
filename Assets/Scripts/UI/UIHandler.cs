@@ -73,6 +73,8 @@ public class UIHandler : MonoBehaviour
         else
         {
             black.SetActive(true);
+            black.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+            yield return new WaitForSeconds(2f);
             for (float i = 100; i >= 0; i--)
             {
                 black.GetComponent<Image>().color = new Color(0, 0, 0, i / 100);
@@ -177,7 +179,7 @@ public class UIHandler : MonoBehaviour
 
         for (float i = 0; i <= 200; i++)
         {
-            boat.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(-529.54f, -41, 0), new Vector3(532.9f, -41, 0), i / 200);
+            boat.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(new Vector3(-529.54f, 159, 0), new Vector3(532.9f, 159, 0), i / 200);
             yield return new WaitForSeconds(0.06f);
         }
         yield return new WaitForSeconds(2f);
@@ -189,6 +191,10 @@ public class UIHandler : MonoBehaviour
         yield return StartCoroutine(UIHandler.instance.speak("Nothing can erase it.", "Me", plrMovement.instance.gameObject));
         yield return StartCoroutine(UIHandler.instance.speak("But I will avenge my people.", "Me", plrMovement.instance.gameObject));
         yield return StartCoroutine(UIHandler.instance.speak("If it's the last thing I do.", "Me", plrMovement.instance.gameObject));
+        plrMovement.instance.canInteract = false;
+        plrMovement.instance.canMove = false;
+        plrMovement.instance.canOpenMenu = false;
+        plrMovement.instance.canBeEngaged = false;
         yield return new WaitForSeconds(2f);
         aftertext.SetActive(true);
         aftertext.GetComponent<TextMeshProUGUI>().text = "TO BE CONTINUED";

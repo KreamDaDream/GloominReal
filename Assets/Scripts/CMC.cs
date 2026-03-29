@@ -78,8 +78,11 @@ public class CMC : MonoBehaviour, IDataPersistence
         yield return StartCoroutine(UIHandler.instance.speak("Why are you so quiet?``` What's wrong?", "Terry", guy));
 
         yield return StartCoroutine(UIHandler.instance.speak("Everyone's dead.", "Me", plrMovement.instance.gameObject));
+        plrMovement.instance.canMove = false;
+        plrMovement.instance.canOpenMenu = false;
+        plrMovement.instance.canBeEngaged = false;
         AudioManager.Instance.ChangeMusic(AudioManager.Instance.wind);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
 
         yield return StartCoroutine(UIHandler.instance.speak(".```.```.```.```What?", "Terry", guy));
         yield return StartCoroutine(UIHandler.instance.speak("The Gloom.```` They attacked the village.``` An entire swarm of them.", "Me", plrMovement.instance.gameObject));
@@ -89,13 +92,18 @@ public class CMC : MonoBehaviour, IDataPersistence
         yield return StartCoroutine(UIHandler.instance.speak("There were too many,``` I'm sorry", "Me", plrMovement.instance.gameObject));
         yield return StartCoroutine(UIHandler.instance.speak("Kahoob have mercy.", "Terry", guy));
         guy.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, -10);
+        plrMovement.instance.canMove = false;
+        plrMovement.instance.canOpenMenu = false;
+        plrMovement.instance.canBeEngaged = false;
         yield return new WaitForSeconds(2);
         guy.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, 0);
         guy.SetActive(false);
         yield return StartCoroutine(UIHandler.instance.speak("How could I let this happen?", "Me", plrMovement.instance.gameObject));
         yield return StartCoroutine(UIHandler.instance.speak("I got everyone killed.", "Me", plrMovement.instance.gameObject));
         yield return StartCoroutine(UIHandler.instance.speak("I have nothing left.", "Me", plrMovement.instance.gameObject));
-
+        plrMovement.instance.canMove = false;
+        plrMovement.instance.canOpenMenu = false;
+        plrMovement.instance.canBeEngaged = false;
         yield return new WaitForSeconds(2);
         plrMovement.instance.gameObject.GetComponent<Animator>().SetInteger("Dir", 2);
         AudioManager.Instance.ChangeMusic(null);

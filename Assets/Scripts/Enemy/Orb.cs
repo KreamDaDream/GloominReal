@@ -72,6 +72,8 @@ public class Orb : MonoBehaviour
             plr.GetComponent<plrMovement>().canMove = false;
             plr.GetComponent<plrMovement>().canInteract = false;
             plr.GetComponent<plrMovement>().canOpenMenu = false;
+            plrMovement.instance.canBeEngaged = false;
+
             plr.GetComponent<plrMovement>().menu.SetActive(false);
 
             plr.GetComponent<plrMovement>().challenged = true;

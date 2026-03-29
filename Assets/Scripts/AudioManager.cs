@@ -30,7 +30,16 @@ public class AudioManager : MonoBehaviour
 
 
 
-
+     void Update()
+    {
+        float targetAs = 16f / 9f;
+        int w = Screen.width;
+        int h = Mathf.RoundToInt(w/targetAs);
+        if (h != Screen.height)
+        {
+            Screen.SetResolution(w, h, false);
+        }
+    }
 
     private void Awake()
     {

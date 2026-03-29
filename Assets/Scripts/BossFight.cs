@@ -68,6 +68,8 @@ public class BossFight : MonoBehaviour, IDataPersistence
 
         plrMovement.instance.canOpenMenu = false;
         plrMovement.instance.canMove = false;
+        plrMovement.instance.canBeEngaged = false;
+
         AudioManager.Instance.ChangeMusic(AudioManager.Instance.wind);
         plrMovement.instance.dir = new Vector3(1, 0);
         yield return new WaitForSeconds(2f);
@@ -83,6 +85,7 @@ public class BossFight : MonoBehaviour, IDataPersistence
 
         yield return StartCoroutine(UIHandler.instance.speak("You're`````` dead.", "Me", plrMovement.instance.gameObject));
         yield return StartCoroutine(UIHandler.instance.speak("Oh well,````` your helmet will look good with all my others!", "Hatted Gloom", ob));
+        plrMovement.instance.canBeEngaged = false;
 
         battleBox.SetActive(true);
         StartCoroutine(battleBox.GetComponent<BattleBox>().toggleBox(true, ob));

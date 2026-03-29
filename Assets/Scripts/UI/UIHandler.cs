@@ -20,7 +20,6 @@ public class UIHandler : MonoBehaviour
 
     public InputAction advance;
     [SerializeField] private GameObject dascene;
-    [SerializeField] private VerticalLayoutGroup listVLG;
 
     [SerializeField] private GameObject boat;
     public static UIHandler instance;
@@ -29,7 +28,6 @@ public class UIHandler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        listVLG.enabled = false;
         if (instance == null)
         {
             instance = this;
@@ -58,11 +56,7 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > 0.5f)
-        {
-            listVLG.enabled = true;
-
-        }
+        
     }
     
      public IEnumerator toggleFade(bool fade)

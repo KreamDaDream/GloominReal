@@ -174,39 +174,28 @@ public class IHan : MonoBehaviour
             
         }
 
-        int count = combatInvent.transform.childCount - 1;
-        if (combatInvStuff.Count > count)
+        
+        foreach (Transform slot in combatInvent.transform)
         {
-            for (int j = combatInvStuff.Count - count; j > 0; j--)
-            {
-                GameObject clone = Instantiate(comInvTemp);
-                clone.transform.parent = comInvTemp.transform.parent;
-                clone.SetActive(true);
-            }
-        }
-        else if (combatInvStuff.Count < count)
-        {
-            for (int j = count - combatInvStuff.Count; j > 0; j--)
-            {
-                Destroy(combatInvent.transform.GetChild(1).gameObject);
-            }
+            slot.gameObject.SetActive(false);
         }
 
         for (int j = 0; j < combatInvStuff.Count; j++)
         {
-            combatInvent.transform.GetChild(j + 1).Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = combatInvStuff[j].ToString();
+            combatInvent.transform.GetChild(j).gameObject.SetActive(true);
+            combatInvent.transform.GetChild(j).Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = combatInvStuff[j].ToString();
 
         }
         if (AP < 2)
         {
-            for (int j = 1; j < combatInvent.transform.childCount; j++)
+            for (int j = 0; j < combatInvent.transform.childCount; j++)
             {
                 combatInvent.transform.GetChild(j).GetComponent<Button>().interactable = false;
 
             }
         } else
         {
-            for (int j = 1; j < combatInvent.transform.childCount; j++)
+            for (int j = 0; j < combatInvent.transform.childCount; j++)
             {
                 combatInvent.transform.GetChild(j).GetComponent<Button>().interactable = true;
 
